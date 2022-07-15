@@ -46,7 +46,6 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Listando todos os enderecos")
     @GetMapping // localhost:8080/contato
     public List<EnderecoDTO> list() {
         log.info("Listando enderecos!");
@@ -64,7 +63,6 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Listando um endereco")
     @GetMapping("/{id}") // localhost:8080/endereco/id
     public List<EnderecoDTO> listById(@PathVariable("id") Integer id) throws RegraDeNegocioException {
         log.info("Tentando listar endereco da pessoa de id ["+id+"]");
@@ -81,7 +79,6 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Criando endereco")
     @PostMapping("/{idPessoa}") // localhost:8080/endereco/6
     public EnderecoDTO post(@PathVariable("idPessoa") Integer id, @RequestBody @Valid EnderecoCreateDTO enderecoCreateDTO) throws RegraDeNegocioException, TipoRequisicaoInvalido {
         log.info("Tentando cadastrar enderecos para a pessoa de id ["+id+"]");
@@ -98,7 +95,6 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Editando um endereco")
     @PutMapping("/{idEndereco}") // localhost:8080/endereco/1000
     public EnderecoDTO update(@PathVariable("idEndereco") Integer id, @RequestBody @Valid EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException, TipoRequisicaoInvalido {
         log.info("Tentando editar endereco de id ["+id+"]");
@@ -115,7 +111,6 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Deletando um endereco")
     @DeleteMapping("/{idEndereco}") // localhost:8080/endereco/10
     public void delete(@PathVariable("idEndereco") Integer id) throws RegraDeNegocioException, TipoRequisicaoInvalido {
         enderecoService.delete(id);

@@ -38,7 +38,7 @@ public class EmailService {
     public static final int DELETE = 3;
 
 
-    public final JavaMailSender emailSender;
+    private final JavaMailSender emailSender;
 
     public void sendSimpleMessage(){
         SimpleMailMessage mensagem = new SimpleMailMessage();

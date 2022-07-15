@@ -76,7 +76,6 @@ public class PessoaController {
             }
     )
     @PostMapping // localhost:8080/pessoa
-    @Schema(description = "Criando pessoa")
     public ResponseEntity<PessoaDTO> create(@Valid @RequestBody PessoaCreateDTO pessoaDTO) throws TipoRequisicaoInvalido {
         log.info("Criando pessoa!");
         return new ResponseEntity<PessoaDTO>(pessoaService.create(pessoaDTO, POST), HttpStatus.CREATED);
@@ -93,7 +92,6 @@ public class PessoaController {
             }
     )
     @GetMapping // localhost:8080/pessoa
-    @Schema(description = "Listando todas as pessoas")
     public List<PessoaDTO> list() {
         log.info("Listando pessoas!");
         return pessoaService.list();
@@ -110,7 +108,6 @@ public class PessoaController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Listando uma pessoa")
     @GetMapping("/byname") // localhost:8080/pessoa/byname?nome=Rafa
     public List<Pessoa> listByName(@RequestParam("nome") String nome) {
         log.info("Listando resultado da busca por ["+nome+"]");
@@ -127,7 +124,6 @@ public class PessoaController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Editando uma pessoa")
     @PutMapping("/{idPessoa}") // localhost:8080/pessoa/1000
     public ResponseEntity<PessoaDTO> update(@PathVariable("idPessoa") Integer id,
                          @Valid @RequestBody PessoaCreateDTO pessoaAtualizar) throws PessoaNulaException, RegraDeNegocioException {
@@ -145,7 +141,6 @@ public class PessoaController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Deletando uma pessoa")
     @DeleteMapping("/{idPessoa}") // localhost:8080/pessoa/10
     public void delete(@PathVariable("idPessoa") Integer id) throws RegraDeNegocioException {
         log.info("Tentando deletar pessoa de id ["+id+"]");

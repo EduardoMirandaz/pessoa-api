@@ -36,7 +36,6 @@ public class ContatoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Listando todos os contatos")
     @GetMapping // localhost:8080/contato
     public List<ContatoDTO> list() {
         log.info("Tentando listar contatos");
@@ -53,7 +52,6 @@ public class ContatoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Listando um contato")
     @GetMapping("/byUserId") // localhost:8080/contato/byUserId?idPessoa=3
     public List<ContatoDTO> listById(@RequestParam("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
         log.info("Tentando listar contatos da pessoa de id ["+idPessoa+"]");
@@ -69,7 +67,6 @@ public class ContatoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Criando contato")
     @PostMapping("/{idPessoa}") // localhost:8080/contato/6
     public ContatoDTO post(@PathVariable("idPessoa") Integer idPessoa, @Valid @RequestBody ContatoCreateDTO contatoCreateDTO) throws RegraDeNegocioException {
         log.info("Tentando inserir novo contato para a pessoa de id ["+idPessoa+"]");
@@ -85,7 +82,6 @@ public class ContatoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Editando um contato")
     @PutMapping("/{idContato}") // localhost:8080/contato/1000
     public ContatoDTO update(@PathVariable("idContato") Integer idContato, @RequestBody ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException {
         log.info("Tentando editar contato de id ["+idContato+"]");
@@ -102,7 +98,6 @@ public class ContatoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @Schema(description = "Deletando um contato")
     @DeleteMapping("/{idContato}") // localhost:8080/contato/10
     public void delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
         log.info("Tentando deletar contato de id ["+id+"]");
